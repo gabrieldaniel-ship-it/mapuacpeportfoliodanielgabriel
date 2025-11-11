@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daniel Cortez Gabriel • CPE Portfolio | Mapúa University</title>
+  <meta name="description" content="Portfolio of Daniel Cortez Gabriel, Computer Engineering student at Mapúa University—coursework, projects, journey, and contact." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg:#0b0f19; /* near-black */
+      --card:#111827; /* dark slate */
+      --fg:#e5e7eb; /* gray-200 */
+      --muted:#9ca3af; /* gray-400 */
+      --accent:#e11d48; /* rose-600 */
+      --accent-2:#22c55e; /* green-500 */
+      --ring:#f59e0b; /* amber-500 */
+      --max:1100px;
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#0b0f19 0%,#0a0e17 100%);color:var(--fg)}
+    a{color:var(--accent)}
+    img{max-width:100%;height:auto}
+    .wrap{max-width:var(--max);margin-inline:auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(11,15,25,.7);backdrop-filter:blur(8px);border-bottom:1px solid #1f2937;z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand .logo{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(from 210deg, var(--accent), var(--accent-2));box-shadow:0 0 0 3px #1f2937}
+    .brand span{letter-spacing:.3px}
+    .links{display:flex;gap:16px;flex-wrap:wrap}
+    .links a{padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--fg)}
+    .links a:focus,.links a:hover{outline:none;background:#111827}
+    .menu-btn{display:none;background:#111827;border:1px solid #1f2937;color:var(--fg);padding:8px 10px;border-radius:10px}
+
+    /* Hero */
+    .hero{padding:56px 0 28px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .tag{display:inline-block;padding:6px 10px;border:1px dashed #374151;border-radius:999px;color:var(--muted);margin-bottom:10px}
+    h1{font-size:clamp(28px,3.5vw,44px);line-height:1.15;margin:0 0 12px}
+    .sub{color:var(--muted);max-width:60ch}
+    .cta{display:flex;gap:12px;margin-top:20px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;text-decoration:none;border:1px solid #253047;background:#0f172a;color:var(--fg);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#f43f5e);border-color:#4c0519}
+    .btn:hover{transform:translateY(-1px)}
+
+    .avatar{aspect-ratio:1/1;border-radius:20px;overflow:hidden;background:#0a0f1f;border:1px solid #1f2937;box-shadow:var(--shadow)}
+    .avatar .placeholder{height:100%;display:grid;place-items:center;color:#94a3b8}
+
+    section{padding:40px 0}
+    section h2{font-size:clamp(22px,3vw,32px);margin:0 0 8px}
+    section p.lead{color:var(--muted);margin-top:4px}
+
+    /* Cards / grids */
+    .grid{display:grid;gap:18px}
+    .cols-2{grid-template-columns:repeat(2,1fr)}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:linear-gradient(180deg,#0f172a 0%,#0b1222 100%);border:1px solid #1f2937;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .meta{color:var(--muted);font-size:14px}
+
+    .course li{margin:6px 0}
+
+    /* Journey */
+    .timeline{position:relative;padding-left:24px}
+    .timeline::before{content:"";position:absolute;left:6px;top:0;bottom:0;width:2px;background:#1f2937}
+    .t-item{position:relative;margin:18px 0}
+    .t-item::before{content:"";position:absolute;left:-2px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px #1f2937}
+
+    /* Project gallery */
+    .thumb{border-radius:12px;border:1px solid #1f2937;background:#0a0f1f;overflow:hidden}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#111827;border:1px solid #1f2937;padding:2px 6px;border-radius:6px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;background:#0a0f1f;border:1px solid #1f2937;color:var(--fg);padding:12px 14px;border-radius:12px}
+    input:focus,textarea:focus{outline:2px solid var(--ring);outline-offset:2px}
+    label{font-size:14px;color:var(--muted)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    footer{padding:32px 0;color:#9aa3b2;border-top:1px solid #1f2937}
+
+    /* Utilities */
+    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:12px;top:12px;width:auto;height:auto;background:#111827;color:var(--fg);padding:10px 12px;border-radius:10px;border:1px solid #374151}
+
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .cols-3{grid-template-columns:1fr}
+      .cols-2{grid-template-columns:1fr}
+      .links{display:none}
+      .menu-btn{display:inline-flex}
+      .links.mobile{display:grid;grid-template-columns:1fr;gap:8px;padding:12px;margin-top:10px}
+      .links.mobile a{background:#0f172a;border:1px solid #1f2937}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header aria-label="Primary">
+    <div class="wrap nav">
+      <div class="brand" aria-label="Site brand">
+        <div class="logo" aria-hidden="true">🧠</div>
+        <span>Daniel Cortez Gabriel • CPE</span>
+      </div>
+      <nav aria-label="Main">
+        <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" id="menuButton">Menu</button>
+        <div class="links" id="deskLinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#coursework">Coursework</a>
+          <a href="#projects">Projects</a>
+          <a href="#journey">Personal Journey</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+    <div class="wrap">
+      <div class="links mobile" id="mobile-menu" hidden>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#projects">Projects</a>
+        <a href="#journey">Personal Journey</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Home -->
+    <section class="hero wrap" id="home" aria-labelledby="home-title">
+      <div class="hero-grid">
+        <div>
+          <span class="tag">Computer Engineering • Mapúa University</span>
+          <h1 id="home-title">Hi, I’m <strong>Daniel Cortez Gabriel</strong> — CPE-B29</h1>
+          <p class="sub">Year Level: <strong>Undergraduate</strong>. Passionate about embedded systems, IoT, and human‑centered engineering. I enjoy turning ideas into working prototypes that solve real problems.</p>
+          <p class="sub"><em>Tagline:</em> “Build what matters, iterate fast, and learn by doing.”</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects" aria-label="Jump to projects">See Projects</a>
+            <a class="btn" href="#coursework" aria-label="Jump to coursework">View Coursework</a>
+          </div>
+        </div>
+        <div class="avatar" aria-label="Profile photo">
+          <!-- Replace src with your own photo link; keep alt text descriptive -->
+          <img src="./assets/avatar.jpg" alt="Professional headshot or avatar of Daniel Cortez Gabriel" class="placeholder" onerror="this.onerror=null;this.src='https://drive.google.com/uc?export=view&id=10rHc5WxgVi4dmoSvVEGNedFZoRz9B0jV'" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section class="wrap" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About Me</h2>
+      <p class="lead">I’m a Computer Engineering student at Mapúa University focused on <strong>embedded systems</strong>, <strong>IoT</strong>, and <strong>human‑centered design</strong>. I love building projects that connect hardware and software—from sensors and microcontrollers to cloud dashboards and mobile apps.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Background & Interests</h3>
+          <ul>
+            <li>ESP32 / Arduino prototyping, PCB basics, and sensor integration</li>
+            <li>Mobile and web dashboards for real‑time monitoring (Blynk, custom UIs)</li>
+            <li>Power systems and battery management for small robotics</li>
+            <li>Clean, accessible UI for technical projects</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Highlights & Activities</h3>
+          <ul>
+            <li>Science Innovation Fair participant—IoT watering system demo</li>
+            <li>Work Immersion at POPCOM Candelaria—documentation & data handling</li>
+            <li>Team projects: RFID gate opener, sensor networks, and dashboards</li>
+            <li>Self‑study: Control systems, Python for data, and Git/GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coursework -->
+    <section class="wrap" id="coursework" aria-labelledby="coursework-title">
+      <h2 id="coursework-title">Coursework</h2>
+      <p class="lead">A selection of courses that strengthened my foundations in computing, electronics, and systems thinking.</p>
+      <div class="grid cols-3">
+        <article class="card course">
+          <h3>Embedded Systems</h3>
+          <p class="meta">C/C++, microcontrollers (ESP32), timers, GPIO, UART/I²C/SPI</p>
+          <ul>
+            <li>Built sensor drivers and debounced inputs</li>
+            <li>Designed low‑power routines and sleep modes</li>
+            <li><a href="#projects" aria-label="Go to projects">Linked assignments →</a></li>
+          </ul>
+        </article>
+        <article class="card course">
+          <h3>Digital Logic & Computer Architecture</h3>
+          <p class="meta">Combinational & sequential logic, FSMs, memory hierarchies</p>
+          <ul>
+            <li>Designed simple ALU & finite state machines</li>
+            <li>Simulated timing and hazards</li>
+          </ul>
+        </article>
+        <article class="card course">
+          <h3>Signals, Systems & Control</h3>
+          <p class="meta">Sampling, filters, feedback, stability, real‑time sensing</p>
+          <ul>
+            <li>Implemented moving‑average filters on MCU</li>
+            <li>Tuned basic PID for pump control</li>
+          </ul>
+        </article>
+        <article class="card course">
+          <h3>Data Communications & Networking</h3>
+          <p class="meta">TCP/IP, MQTT, Wi‑Fi, NAT, latency optimization</p>
+          <ul>
+            <li>Benchmarked home network for IoT reliability</li>
+            <li>Built MQTT prototype on local broker</li>
+          </ul>
+        </article>
+        <article class="card course">
+          <h3>Software Engineering</h3>
+          <p class="meta">Git, agile, testing, documentation, accessibility</p>
+          <ul>
+            <li>Wrote concise READMEs and UML diagrams</li>
+            <li>Shipped responsive dashboards</li>
+          </ul>
+        </article>
+        <article class="card course">
+          <h3>Entrepreneurial Mindset</h3>
+          <p class="meta">Costing, ROI, user research, product thinking</p>
+          <ul>
+            <li>Estimated battery pack ROI for solar projects</li>
+            <li>Interviewed users for app prototypes</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="wrap" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <p class="lead">Hands‑on builds that apply my coursework to real problems.</p>
+      <div class="grid cols-3">
+        <!-- Project 1 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="./assets/plant.jpg" alt="Screenshot of Blynk dashboard controlling an automatic plant watering system" onerror="this.onerror=null;this.src='https://drive.google.com/uc?export=view&id=15gvYUMkwNmNfBl2iviVfEnbx1afDJkx3'" />
+          </div>
+          <h3>Automatic Plant Watering System</h3>
+          <p>ESP32‑based controller that waters plants using soil moisture feedback and a relay‑driven pump, with a Blynk mobile dashboard.</p>
+          <ul>
+            <li><strong>Features:</strong> Auto/Manual modes, LCD status, overflow protection</li>
+            <li><strong>Tech:</strong> ESP32 (30‑pin), I²C LCD, soil sensor, 5V relay, Blynk V1–V4</li>
+          </ul>
+          <p class="meta"><a href="#" aria-label="Open demo or repository">Demo/Repo</a> · <a href="#" aria-label="Open documentation">Docs</a></p>
+        </article>
+        <!-- Project 2 -->
+        <article class="card">
+          <div class="thumb" aria-hidden="true">
+            <img src="./assets/gate.jpg" alt="RFID antenna and control box for gate opener prototype" onerror="this.onerror=null;this.src='https://drive.google.com/uc?export=view&id=1zg7aSAWK_yatMprYPMh9d4S-wnFw0XbO'" />
+          </div>
+          <h3>UHF RFID Gate Opener</h3>
+          <p>Gate controller that reads UHF tag IDs directly (no Wiegand) and opens the gate only for registered vehicles.</p>
+          <ul>
+            <li><strong>Features:</strong> Whitelist, event logs, safety IR sensor</li>
+            <li><strong>Tech:</strong> UHF reader, MCU, relay drivers, REST API (optional)</li>
+          </ul>
+          <p class="meta"><a href="#" aria-label="Open demo or repository">Demo/Repo</a> · <a href="#">Design Notes</a></p>
+        </article>
+        
+      </div>
+    </section>
+
+    <!-- Personal Journey -->
+    <section class="wrap" id="journey" aria-labelledby="journey-title">
+      <h2 id="journey-title">Personal Journey</h2>
+      <p class="lead">A narrative about how Mapúa shaped my technical skills and mindset, with key milestones along the way.</p>
+      <div class="card">
+        <div class="timeline" aria-label="Education and project timeline">
+          <div class="t-item">
+            <h3>Year 1 – Foundations</h3>
+            <p>Adjusted to college workflows, learned Git basics, and shipped my first <span class="kbd">ESP32</span> sensor prototype. Discovered how documentation and accessibility impact real users.</p>
+          </div>
+          <div class="t-item">
+            <h3>Year 2 – Systems Thinking</h3>
+            <p>Integrated multiple sensors and built a reliable loop with debounced inputs and watchdog resets. Presented the <em>Automatic Plant Watering</em> project at a school fair.</p>
+          </div>
+          <div class="t-item">
+            <h3>Year 3 – From Projects to Products</h3>
+            <p>Explored user research and ROI for hardware projects. Started logging issues, using CI checks, and writing clear READMEs so others can replicate my builds.</p>
+          </div>
+          <div class="t-item">
+            <h3>Next – Industry Readiness</h3>
+            <p>Seeking internships and collaboration on embedded systems, low‑power design, and field‑tested IoT deployments.</p>
+          </div>
+        </div>
+      </div>
+      <p class="meta" style="margin-top:10px">Prefer a vlog? Embed a YouTube or Drive video below and include captions for accessibility.</p>
+      <div class="card" aria-label="Embedded media placeholder">
+        <p><strong>Embed area:</strong> Paste your video iframe here (YouTube/Drive). Add <code>title</code> and captions.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="wrap" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p class="lead">Let’s connect for project collaboration, internships, or tech communities.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <form action="https://formspree.io/f/your-id" method="POST" aria-labelledby="contact-title">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required aria-required="true" />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required aria-required="true" />
+
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" rows="5" placeholder="How can I help?" required aria-required="true"></textarea>
+
+            <button class="btn primary" type="submit">Send Message</button>
+            <p class="meta">No external JS required. Replace the Formspree ID to enable this form.</p>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Professional Links</h3>
+          <ul>
+            <li>Email: <a href="mailto:gabrieldaniel.sva@gmail.com">gabrieldaniel.sva@gmail.com</a></li>
+            <li>LinkedIn: <a href="#" rel="noopener">linkedin.com/in/daniel-gabriel</a></li>
+            <li>GitHub: <a href="#" rel="noopener">github.com/danielcgabriel</a></li>
+            <li>Download Résumé (PDF): <a href="#" rel="noopener">Add link</a></li>
+          </ul>
+          <p class="meta">All images include descriptive <em>alt</em> text; color contrast meets WCAG AA intentions. Use captions for videos.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <p>© <span id="year"></span> Daniel Cortez Gabriel • Computer Engineering @ Mapúa University</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle (accessible)
+    const btn = document.getElementById('menuButton');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if(menu.hasAttribute('hidden')){menu.removeAttribute('hidden')} else {menu.setAttribute('hidden','')}
+    });
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
